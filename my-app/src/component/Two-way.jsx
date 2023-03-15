@@ -52,7 +52,7 @@ function TwoWay() {
   }
   return (
     <>
-      <h1>bài 2</h1>
+      <h1>bài 2 TwoWay</h1>
       <h2>{gift ? gift : 'Chưa có phần thưởng'}</h2>
       <button onClick={randomGift}>lấy thưởng</button>
 

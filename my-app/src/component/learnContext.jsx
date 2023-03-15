@@ -5,6 +5,7 @@ function LearnContext() {
   const theme = context.theme
   return (
     <div>
+      <h1>LearnContext</h1>
       <button 
       style={{ backgroundColor: theme === 'dark' ? '#eee' : 'white'}}
       onClick={context.handleTheme}>

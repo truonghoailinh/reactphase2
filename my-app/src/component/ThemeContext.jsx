@@ -14,6 +14,7 @@ function ThemeProvider({ children }) {
   }
   return (
     <>
+      <h1>ThemeProvider</h1>
       <ThemeContext.Provider value={value}>
         { children }
       </ThemeContext.Provider>

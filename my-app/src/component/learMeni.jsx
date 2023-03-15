@@ -3,7 +3,7 @@ import React, {memo} from 'react'
 function LearnMemo(props) {
   return(
     <>
-      <h1>bai 11</h1>
+      <h1>bai 11 LearnMemo</h1>
       <button onClick={props.onIncrease}>click me</button>
     </>
   )

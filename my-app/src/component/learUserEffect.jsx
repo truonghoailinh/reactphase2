@@ -43,7 +43,7 @@ function LearnUserEffect() {
 
   return (
     <div>
-      <h1>bài 5 {countdown}</h1>
+      <h1>bài 5 LearnUserEffect {countdown}</h1>
       {tabs.map(tab => (
         <button key={tab} style={type === tab ? {color: 'red'} : {color: 'black'}} onClick={() => setType(tab)}>
           {tab}

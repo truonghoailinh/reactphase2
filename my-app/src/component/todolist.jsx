@@ -19,7 +19,7 @@ function TodoList() {
   return(
     <>
       <div style={{ padding: 32}}>
-        <h1>bai 3</h1>
+        <h1>bai 3 TodoList</h1>
 
         <input value={job} onChange={e => setJob(e.target.value)} type="text" />
         <button onClick={handleSubmit}>ADD</button>

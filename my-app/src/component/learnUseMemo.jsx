@@ -22,7 +22,7 @@ function LearnUseMemo() {
 
   return (
     <>
-      <h1>bai 12 total: {total} </h1>
+      <h1>bai 12 LearnUseMemo total: {total} </h1>
       <input type="text" value={name} placeholder="Enter name..." onChange={e => setName(e.target.value)} />
       <br />
       <input type="text" value={price} placeholder="Enter price..." onChange={e => setPrice(e.target.value)} />

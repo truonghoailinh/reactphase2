@@ -14,7 +14,7 @@ function LearnReduce() {
   }
   return (
     <>
-      <h1>{count}</h1>
+      <h1>LearnReduce {count}</h1>
       <button onClick={() => dispatch(DOWN_ACTION)}>
         DOWN
       </button>

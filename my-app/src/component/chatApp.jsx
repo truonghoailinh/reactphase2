@@ -30,7 +30,7 @@ function ChatApp() {
 
   return (
     <>
-      <h1>Bài 8</h1>
+      <h1>Bài 8 ChatApp</h1>
       <ul>
         {lessons.map(lesson => (
           <li key={lesson.id} style={{ color: lessonId === lesson.id ? 'red': '#333' }} onClick={() => setLessonId(lesson.id)}>

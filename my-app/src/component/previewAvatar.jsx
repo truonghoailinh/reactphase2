@@ -15,7 +15,7 @@ function PreviewAvatar() {
   }
   return (
     <>
-      <h1>bài 7</h1>
+      <h1>bài 7 PreviewAvatar</h1>
       <input type="file" onChange={handlePreviewAvatar} />
       {
         avatar && (

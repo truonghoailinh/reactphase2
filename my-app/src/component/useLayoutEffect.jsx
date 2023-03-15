@@ -13,7 +13,7 @@ function UseLayoutEffectL() {
   }
   return (
     <>
-      <h1>bai 9</h1>
+      <h1>bai 9 UseLayoutEffect</h1>
       <h3>{count}</h3>
       <button onClick={handleRun}>Run</button>
     </>

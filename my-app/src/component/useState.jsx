@@ -15,7 +15,7 @@ function Counter() {
   return (
     <>
     <div className="counter" style={{ padding: 20}}>
-      <h1>bai 1</h1>
+      <h1>bai 1 useState</h1>
       <h2>{counter}</h2>
       <button onClick={handleIncrease}>Increase</button>
       <pre>{JSON.stringify(info)}</pre>
