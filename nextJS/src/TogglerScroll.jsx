@@ -30,9 +30,6 @@ function TogglerScroll({ primaryImg, secondaryImg }) {
   if (isLoading) return null;
   return (
     <>
-      <hr />
-      <br />
-      <h2>Scroll</h2>
       <img src={ isLoading ? "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" : inView ? secondaryImg : primaryImg} ref={imageRef} alt=""
       />
     </>
