@@ -4,7 +4,11 @@ import speakerData from './SpeaderData'
 import axios from 'axios'
 
 function useSpeakerDateManager() {
-  const [{ isLoading, speakerList}, dispatch] = useReducer(speakersReducer, {isLoading: true, speakerList: []})
+  const [{ isLoading, speakerList, favoriteClickCount}, dispatch] = useReducer(speakersReducer, {isLoading: true, speakerList: [], favoriteClickCount: 0})
+
+  function incrementFavoriteClickCount() {
+    dispatch({type: 'incrementFavoriteClickCount'})
+  }
 
   function toggleSpeakerFavorite(speakerRec) {
     const updateData = async function() {
@@ -36,7 +40,7 @@ function useSpeakerDateManager() {
       console.log('cleanup')
     }
   }, [])
-  return {isLoading, speakerList, toggleSpeakerFavorite}
+  return {isLoading, speakerList, favoriteClickCount, incrementFavoriteClickCount, toggleSpeakerFavorite}
 }
 
 export default useSpeakerDateManager

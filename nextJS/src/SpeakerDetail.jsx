@@ -1,9 +1,13 @@
-import React, { memo } from 'react'
+import React, { memo, useContext } from 'react'
 import TogglerScroll from './TogglerScroll'
+import { FavoriteClickCountContext } from './FavoriteClickCountContext'
 
 const SpeakersDetail = ({speakerRec, onHeartFavoriteHandler}) => {
   const {id, firstName, lastName, favorite, bio} = speakerRec
   console.log(id, firstName, lastName)
+
+  const {incrementFavoriteClickCount} =  useContext(FavoriteClickCountContext)
+
   return (
     <div className="col-4 cardmin">
       <div className="card">
@@ -15,10 +19,11 @@ const SpeakersDetail = ({speakerRec, onHeartFavoriteHandler}) => {
               className={favorite ? 'heartedbutton btn-primary' : 'heartdarkbutton btn-info'}
               onClick={(e) => {
                 onHeartFavoriteHandler(e, speakerRec)
+                incrementFavoriteClickCount()
               }}>
             </button>
             <span>
-              {firstName} {lastName}
+              {firstName} {lastName} 
             </span>
           </h4>
           <span>{bio}</span>

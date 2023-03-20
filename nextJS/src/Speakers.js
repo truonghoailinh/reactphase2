@@ -3,15 +3,15 @@ import Menu from './Menu'
 import Header from './Header'
 import SpeakersDetail from './SpeakerDetail'
 import { ConfigContext } from './App'
-import useSpeakerDateManager from './useSpeakerDataManager'
+import { GlobalContext } from './GlobalState'
 
 function Speakers() {
   const [speakingSun, setSpeakingSun] = useState(true)
   const [speakingSat, setSpeakingSat] = useState(true)
-  // const [isLoading, setIsLoading] = useState(true)
+
   const context = useContext(ConfigContext)
 
-  const {isLoading, speakerList, toggleSpeakerFavorite} = useSpeakerDateManager()
+  const {isLoading, speakerList, toggleSpeakerFavorite} = useContext(GlobalContext)
 
   const handleChangeSat = () => {
     setSpeakingSat(!speakingSat)
