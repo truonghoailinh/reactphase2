@@ -1,66 +1,17 @@
-import React, {useState, useEffect, useContext, useReducer, useCallback, useMemo} from 'react'
+import React, {useState, useContext, useCallback, useMemo} from 'react'
 import Menu from './Menu'
 import Header from './Header'
-import speakerData from './SpeaderData'
 import SpeakersDetail from './SpeakerDetail'
-import speakersReeducer from './speakersReducer'
-
 import { ConfigContext } from './App'
+import useSpeakerDateManager from './useSpeakerDataManager'
+
 function Speakers() {
   const [speakingSun, setSpeakingSun] = useState(true)
   const [speakingSat, setSpeakingSat] = useState(true)
-  // const [listData, setListDaTa] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  
-  function SpeakersReucer(state, action) {
-    function updateFavorite(favoriteValue) {
-      return state.map((item, index) => {
-        if (item.id === action.sectionId) {
-          return {...item,favorite: favoriteValue}
-        }
-        return item
-      })
-    }
-   switch (action.type) {
-    case 'setListDaTa': {
-      return action.data
-    } 
-    case 'favorite': {
-     return updateFavorite(true)
-    }
-    case 'unfavorite': {
-      return updateFavorite(false)
-    }
-    default:
-      return state
-   }
-  } 
-
-  const [listData, dispatch] = useReducer(SpeakersReucer, [])
-  
+  // const [isLoading, setIsLoading] = useState(true)
   const context = useContext(ConfigContext)
 
-  useEffect(() => {
-    setIsLoading(true)
-    new Promise(function(resolve) {
-      setTimeout(function() {
-        resolve()
-      }, 1000)
-    }).then(() => {
-      setIsLoading(false)
-      const speakerListServeFilter = speakerData.filter(({sat, sun}) => {
-        return (speakingSat && sat) || (speakingSun && sun);
-      })
-      // setListDaTa(speakerListServeFilter)
-      dispatch({
-        type: 'setListDaTa',
-        data: speakerListServeFilter
-      })
-    })
-    return () => {
-      console.log('cleanup')
-    }
-  }, [])
+  const {isLoading, speakerList, toggleSpeakerFavorite} = useSpeakerDateManager()
 
   const handleChangeSat = () => {
     setSpeakingSat(!speakingSat)
@@ -69,16 +20,14 @@ function Speakers() {
     setSpeakingSun(!speakingSun)
   }
 
-  const heartFavoriteHandler = useCallback((e, favoriteValue) => {
+  const heartFavoriteHandler = useCallback((e, speakerRec) => {
     e.preventDefault();
-    const sectionId = parseInt(e.target.attributes['data-sesionid'].value)
-
-    dispatch({type: favoriteValue === true ? 'favorite' : 'unfavorite', sectionId})
+    toggleSpeakerFavorite(speakerRec)
 
     // )
   }, [])
 
-  const newSpeakerList = useMemo(() => listData
+  const newSpeakerList = useMemo(() => speakerList
   .filter(
     ({sat, sun}) => (speakingSat && sat) || (speakingSun && sun))
   )
@@ -122,9 +71,9 @@ function Speakers() {
         </div>
         <div className="row">
           <div className="card-deck">
-            {speakerListFiltered.map(({id, firstName, lastName, bio, favorite}) => {
+            {speakerListFiltered.map((speakerRec) => {
               return (
-                <SpeakersDetail key={id} id={id} favorite={favorite} firstName={firstName} lastName={lastName} bio={bio} onHeartFavoriteHandler={heartFavoriteHandler}/>
+                <SpeakersDetail key={speakerRec.id} speakerRec={speakerRec} onHeartFavoriteHandler={heartFavoriteHandler}/>
               )
             })}
           </div>

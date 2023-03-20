@@ -1,7 +1,8 @@
 import React, { memo } from 'react'
 import TogglerScroll from './TogglerScroll'
 
-const SpeakersDetail = ({id, firstName, lastName, favorite, bio, onHeartFavoriteHandler}) => {
+const SpeakersDetail = ({speakerRec, onHeartFavoriteHandler}) => {
+  const {id, firstName, lastName, favorite, bio} = speakerRec
   console.log(id, firstName, lastName)
   return (
     <div className="col-4 cardmin">
@@ -9,11 +10,11 @@ const SpeakersDetail = ({id, firstName, lastName, favorite, bio, onHeartFavorite
         <TogglerScroll primaryImg="https://source.unsplash.com/user/c_v_r/500x500" secondaryImg="https://source.unsplash.com/user/c_v_r/700x500" />
         <div className="card-body">
           <h4 className="card-title">
-            <button data-sesionid={id}
+            <button
             style={{height: 30, width: 30, marginRight: 10}}
               className={favorite ? 'heartedbutton btn-primary' : 'heartdarkbutton btn-info'}
               onClick={(e) => {
-                onHeartFavoriteHandler(e, !favorite)
+                onHeartFavoriteHandler(e, speakerRec)
               }}>
             </button>
             <span>
